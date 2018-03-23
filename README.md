@@ -1,10 +1,8 @@
-# Hello Todo
+# Impact Todo
 
 ![screenshot](./assets/images/screenshot.png)
 
 **Hello Todo** is a simple todo app for everyone.
-
-You can [access it here live](https://hellotodo.netlify.com).
 
 ---
 
