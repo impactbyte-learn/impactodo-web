@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Impact Todo</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./styles/animate.css">
+  <link rel="stylesheet" href="./styles/index.css">
+  <link rel="stylesheet" href="./styles/app.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="root container-fluid">
+
+    <!-- Header -->
+    <header id="header" class="row horizontal-center background-red header">
+      <h1 id="title" class="huge animated tada">
+        <img src="./assets/images/logo.png" alt="Logo">
+        <span>Impact Todo</span>
+        <span class="small">(&beta;)</span>
+      </h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav id="navigation" class="row horizontal-center background-red white navigation">
+      <ul class="row space-around">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="app.html">App</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+
+    <!-- App -->
+    <main id="app-container" class="app-container row horizontal-center flex-1">
+
+      <div id="app-content" class="app-content column horizontal-center">
+        <form id="input-box" class="form-controls row horizontal-center space-between">
+
+          <div class="col-9">
+            <input id="input-text" class="input-text" type="text" name="newtodo" value="" placeholder="What do you want to do?">
+          </div>
+          <div class="col-3">
+            <input id="input-add" class="button-primary" type="button" name="add" value="Add">
+          </div>
+        </form>
+
+        <section id="output-box" class="output-box">
+          <!-- <div data-id="0">
+            <span>Join Impact Byte coding bootcamp</span>
+            <i class="delete button fas fa-times-circle"></i>
+          </div>
+          <div data-id="0">
+            <span>Design my first website</span>
+            <i class="delete button fas fa-times-circle"></i>
+          </div>
+          <div data-id="0">
+            <span>Create a todo app</span>
+            <i class="delete button fas fa-times-circle"></i>
+          </div>
+          <div data-id="0">
+            <span>Eat some lunch</span>
+            <i class="delete button fas fa-times-circle"></i>
+          </div> -->
+        </section>
+
+      </div>
+
+    </main>
+
+    <script src="./scripts/app.js" charset="utf-8"></script>
+
+    <!-- Footer -->
+    <footer id="footer" class="row horizontal-center background-red footer">
+      <small>Copyright 2018 &copy; Impact Byte</small>
+    </footer>
+
+  </div>
+</body>
+
+</html>

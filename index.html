@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Impact Todo App</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./styles/animate.css">
+  <link rel="stylesheet" href="./styles/index.css">
+</head>
+
+<body>
+  <div class="root container-fluid">
+
+    <!-- Header -->
+    <header id="header" class="row horizontal-center background-red header">
+      <h1 id="title" class="huge animated tada">
+        <img src="./assets/images/logo.png" alt="Logo">
+        <span>Impact Todo</span>
+        <span class="small">(&beta;)</span>
+      </h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav id="navigation" class="row horizontal-center background-red white navigation">
+      <ul class="row space-around">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="app.html">App</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+
+    <!-- Screenshots -->
+    <main class="row horizontal-center">
+      <div class="column">
+        <h3 class="red">Screenshot:</h3>
+        <img src="./assets/images/screenshot.png" alt="Screenshot" width="300px">
+      </div>
+    </main>
+
+    <!-- Forms -->
+    <div class="row horizontal-center flex-1">
+      <form>
+        <div class="column form-group">
+          <h3 class="red">Enter your name & email:</h3>
+          <label for="fullname">Full Name:</label>
+          <input type="text" name="fullname" placeholder="First Last" class="form-control"></input>
+          <br>
+
+          <label for="email">Email:</label>
+          <input type="email" name="email" placeholder="name@example.com" class="form-control">
+          <br>
+
+          <a href="app.html">
+          <button type="button" name="start" class="btn btn-outline-primary btn-block">Start App</button>
+        </a>
+        </div>
+      </form>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer" class="row horizontal-center background-red footer">
+      <small>Copyright 2018 &copy; Impact Byte</small>
+    </footer>
+
+  </div>
+</body>
+
+</html>

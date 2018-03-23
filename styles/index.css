@@ -1,0 +1,115 @@
+@import url("./color.css");
+
+@font-face {
+  font-family: "Black Jack";
+  src: url("../fonts/blackjack/blackjack-webfont.eot");
+  src: url("../fonts/blackjack/blackjack-webfont.eot?iefix") format("eot"),
+    url("../fonts/blackjack/blackjack-webfont.woff") format("woff"),
+    url("../fonts/blackjack/blackjack-webfont.ttf") format("truetype"),
+    url("../fonts/blackjack/blackjack-webfont.svg#webfont") format("svg");
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  font-size: 20px;
+  font-family: "Arial";
+  margin: 0 auto;
+}
+
+h1 {
+  font-family: "Black Jack", cursive;
+  font-weight: bold;
+}
+
+p {
+  margin: auto;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+}
+
+.header {
+  padding: 20px;
+}
+
+.navigation {
+  font-size: 24px;
+  background-color: red;
+  height: 40px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.navigation ul {
+  list-style: none;
+  padding: 0;
+  height: 30px;
+}
+
+.navigation a {
+  text-decoration: none;
+}
+
+.navigation li {
+  margin: 0 20px;
+}
+
+.huge {
+  font-size: 40px;
+}
+
+.small {
+  font-size: 20px;
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+.horizontal-center {
+  justify-content: center;
+}
+
+.vertical-center {
+  align-items: center;
+}
+
+.space-around {
+  justify-content: space-around;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.background-red {
+  background: #930000;
+  color: #fff;
+}
+
+.flex-1 {
+  align-items: flex-start;
+  flex: 1;
+}
+
+.center {
+  max-width: 800px;
+}
+
+.footer {
+  min-height: 50px;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.m-0 {
+  margin: 0 auto;
+}
