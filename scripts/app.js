@@ -36,11 +36,11 @@
   const display = () => {
     // empty out all todos in outputBox
     outputBox.innerHTML = "";
+
     // map over all todos to create all todo nodes
     get().forEach((todo, index) => {
       const element = document.createElement("div");
-      const innerElement = template(index, todo);
-      element.innerHTML = innerElement;
+      element.innerHTML = template(index, todo);
       outputBox.append(element);
     });
   };
@@ -50,13 +50,15 @@
 
   const push = todo => {
     const todos = get();
+
     todos.push(todo);
     set(todos);
   };
 
   const add = event => {
-    const text = document.getElementById("todo").value;
     event.preventDefault(); // prevent default submit behavior
+
+    const text = document.getElementById("todo").value;
     todo.value = "";
 
     if (text !== "") {
@@ -86,20 +88,21 @@
 
   const search = event => {
     const value = event.target.value.toLowerCase();
-
     const todos = get();
     const searched = todos.filter(todo =>
       todo.text.toLowerCase().includes(value)
     );
+
     displaySearched(searched);
   };
 
   const displaySearched = searched => {
     outputBox.innerHTML = "";
+
     searched.forEach((todo, index) => {
       const element = document.createElement("div");
-      const innerElement = template(index, todo);
-      element.innerHTML = innerElement;
+
+      element.innerHTML = template(index, todo);
       outputBox.append(element);
     });
   };
