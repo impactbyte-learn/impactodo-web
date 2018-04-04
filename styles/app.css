@@ -60,7 +60,7 @@
   font-family: monospace;
 }
 
-.button.delete {
+.delete {
   float: right;
   border: none;
   background: none;
@@ -70,7 +70,7 @@
   font-weight: bolder;
 }
 
-.button.delete:hover {
+.delete:hover {
   color: hsl(14, 74%, 43%);
 }
 

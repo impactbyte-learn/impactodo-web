@@ -35,8 +35,10 @@ const setTodos = newTodosArray => {
 const createNodeStringTemplate = (todoIndex, todoObject) => {
   const template = `
   <div id="${todoIndex}" data-id="${todoIndex}">
-    <span class="animated bounceIn">${todoObject.text}</span>
-    <i class="delete button fas fa-times-circle"></i>
+    <span id="todo-${todoIndex}" class="animated bounceIn">${todoObject.text}
+    </span>
+    <span id="delete-${todoIndex}" class="delete">X
+    </span>
   </div>
   `;
 
@@ -47,6 +49,9 @@ const createNodeStringTemplate = (todoIndex, todoObject) => {
 
 // show all todos
 const displayTodos = () => {
+  // empty out all todos in output box
+  outputBox.innerHTML = "";
+
   const currentTodos = getTodos();
 
   // map over all todos to create all todo nodes

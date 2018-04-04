@@ -19,9 +19,6 @@ const addNewTodo = event => {
 
   // only proceed if the text is not empty
   if (newTodoText !== "") {
-    // empty out all todos in output box
-    outputBox.innerHTML = "";
-
     // push the new text into todos array
     pushNewTodo({ text: newTodoText });
 
