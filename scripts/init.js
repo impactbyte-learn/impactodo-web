@@ -1,18 +1,15 @@
-const parser = new DOMParser(); // use for parsing string to DOM node
+// -----------------------------------------------------------------------------
 
 const input = document.getElementById("input");
 const output = document.getElementById("output");
 const add = document.getElementById("add");
-
-let storage = [];
 
 // -----------------------------------------------------------------------------
 // get data string from storage, then convert it to object
 
 const get = () => {
   if (localStorage.todos) {
-    const todos = JSON.parse(localStorage.todos); // parse from string to array object
-    return todos;
+    return JSON.parse(localStorage.todos); // parse from string to array object
   } else {
     localStorage.todos = "[]"; // set the initial data string if not found
     return [];
@@ -31,11 +28,9 @@ const set = todos => {
 
 const template = (index, todo) => {
   const template = `
-  <div>
-    <span id="todo-${index}" class="animated bounceIn">${todo.text}</span>
-    <span id="delete-${index}" class="delete">X</span>
-  </div>`;
-
+  <span id="todo-${index}" class="animated bounceIn">${todo.text}</span>
+  <span id="destroy-${index}" class="destroy">X</span>
+  `;
   return template;
 };
 
@@ -48,13 +43,10 @@ const display = () => {
 
   // map over all todos to create all todo nodes
   todos.forEach((todo, index) => {
-    const nodeString = template(index, todos[index]);
-    // convert the resulted template into HTML
-    const doc = parser.parseFromString(nodeString, "text/html");
-    // get only the <div> inside html.body
-    const node = doc.body.firstChild;
-
-    output.append(node);
+    const element = document.createElement("div");
+    const innerElement = template(index, todos[index]);
+    element.innerHTML = innerElement;
+    output.append(element);
   });
 };
 

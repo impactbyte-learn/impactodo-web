@@ -1,3 +1,5 @@
+// -----------------------------------------------------------------------------
+
 const push = todo => {
   const todos = get();
   todos.push(todo);
@@ -6,7 +8,7 @@ const push = todo => {
 
 // -----------------------------------------------------------------------------
 
-const addNewTodo = event => {
+const add = event => {
   event.preventDefault(); // prevent default submit behavior
   const text = document.getElementById("todo").value; // get text from input box
   if (text !== "") {
@@ -19,5 +21,5 @@ const addNewTodo = event => {
 
 // -----------------------------------------------------------------------------
 
-input.addEventListener("submit", addNewTodo);
-add.addEventListener("click", addNewTodo);
+input.addEventListener("submit", add);
+add.addEventListener("click", add);

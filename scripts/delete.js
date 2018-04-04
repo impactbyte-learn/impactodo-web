@@ -1,7 +1,7 @@
 // -----------------------------------------------------------------------------
 // delete one todo object in array
 
-const deleteTodo = id => {
+const destroy = id => {
   const todos = get();
   todos.splice(id, 1); // delete the object with specified index
   set(todos);
@@ -12,8 +12,8 @@ const deleteTodo = id => {
 // liten for a click to delete
 
 output.addEventListener("click", event => {
-  if (event.target.matches(".delete")) {
-    const id = event.target.id.replace("delete-", "");
-    deleteTodo(id);
+  if (event.target.matches(".destroy")) {
+    const id = event.target.id.replace("destroy-", "");
+    destroy(id);
   }
 });
