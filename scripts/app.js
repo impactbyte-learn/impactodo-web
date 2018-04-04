@@ -28,7 +28,7 @@
 
   const template = (index, todo) => {
     return `
-    <span id="todo-${index}" class="animated bounceIn">${todo.text}</span>
+    <span id="todo-${index}" class="todo animated bounceIn">${todo.text}</span>
     <span id="destroy-${index}" class="destroy">X</span>
     `;
   };
@@ -55,8 +55,10 @@
   };
 
   const add = event => {
+    const text = document.getElementById("todo").value;
     event.preventDefault(); // prevent default submit behavior
-    const text = document.getElementById("todo").value; // get text from input box
+    todo.value = "";
+
     if (text !== "") {
       push({ text });
       display();
@@ -103,12 +105,34 @@
   };
 
   // ===========================================================================
+  // EDIT / UPDATE
+
+  const edit = event => {
+    if (event.target.matches(".todo")) {
+      const todos = get();
+      const id = event.target.id.replace("todo-", "");
+      const newText = prompt("Update todo text:");
+
+      console.log(todos[id]);
+
+      if (newText !== "") {
+        todos[id].text = newText;
+        set(todos);
+        display();
+      } else {
+        alert("Text can not be empty");
+      }
+    }
+  };
+
+  // ===========================================================================
   // LISTENER
 
+  searchForm.addEventListener("keyup", search);
   inputForm.addEventListener("submit", add);
   addButton.addEventListener("click", add);
   outputBox.addEventListener("click", destroy);
-  searchForm.addEventListener("keyup", search);
+  outputBox.addEventListener("click", edit);
 
   // ===========================================================================
   // INITIALIZATION
