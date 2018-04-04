@@ -67,8 +67,11 @@
   font-family: monospace;
 }
 
+.date {
+  color: #ccc;
+}
+
 .destroy {
-  float: right;
   border: none;
   background: none;
   color: lightgray;

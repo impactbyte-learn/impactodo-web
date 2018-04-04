@@ -28,7 +28,10 @@
 
   const template = (index, todo) => {
     return `
-    <span id="todo-${index}" class="todo animated bounceIn">${todo.text}</span>
+    <span id="todo-${index}" class="todo animated bounceIn">
+      ${todo.text}
+      <small class="date">${moment(todo.date).calendar()}</small>
+      </span>
     <span id="destroy-${index}" class="destroy">X</span>
     `;
   };
@@ -48,21 +51,21 @@
   // ===========================================================================
   // ADD / CREATE
 
-  const push = todo => {
-    const todos = get();
-
-    todos.push(todo);
-    set(todos);
-  };
+  const push = todo => {};
 
   const add = event => {
     event.preventDefault(); // prevent default submit behavior
 
+    const todos = get();
     const text = document.getElementById("todo").value;
     todo.value = "";
 
     if (text !== "") {
-      push({ text });
+      todos.push({
+        text: text,
+        date: new Date()
+      });
+      set(todos);
       display();
     } else {
       alert("Input can not be empty");
@@ -117,7 +120,10 @@
       const newText = prompt(`Update "${todos[id].text}":`);
 
       if (newText !== "") {
-        todos[id].text = newText;
+        todos[id] = {
+          text: newText,
+          date: new Date()
+        };
         set(todos);
         display();
       } else {
