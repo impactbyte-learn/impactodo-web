@@ -1,36 +1,23 @@
-// push the new object into array that retrieved from storage
-const pushNewTodo = newTodoObject => {
-  const currentTodosArray = getTodos();
-
-  currentTodosArray.push(newTodoObject);
-
-  setTodos(currentTodosArray);
+const push = todo => {
+  const todos = get();
+  todos.push(todo);
+  set(todos);
 };
 
 // -----------------------------------------------------------------------------
 
-// add a new todo from input
 const addNewTodo = event => {
-  // prevent default submit behavior
-  event.preventDefault();
-
-  // get text from input box
-  const newTodoText = document.getElementById("input-todo-text").value;
-
-  // only proceed if the text is not empty
-  if (newTodoText !== "") {
-    // push the new text into todos array
-    pushNewTodo({ text: newTodoText });
-
-    // redisplay the todos
-    displayTodos();
+  event.preventDefault(); // prevent default submit behavior
+  const text = document.getElementById("todo").value; // get text from input box
+  if (text !== "") {
+    push({ text });
+    display();
   } else {
-    alert("Input can't be empty");
+    alert("Input can not be empty");
   }
 };
 
 // -----------------------------------------------------------------------------
 
-// listen for a submit/click to add a new todo
-inputBox.addEventListener("submit", addNewTodo);
-addButton.addEventListener("click", addNewTodo);
+input.addEventListener("submit", addNewTodo);
+add.addEventListener("click", addNewTodo);

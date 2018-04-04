@@ -1,18 +1,19 @@
-const deleteTodoWithId = todoId => {
-  const currentTodos = getTodos();
+// -----------------------------------------------------------------------------
+// delete one todo object in array
 
-  // delete the object with specified index
-  currentTodos.splice(todoId, 1);
-  console.log(currentTodos);
-
-  setTodos(currentTodos);
-  displayTodos();
+const deleteTodo = id => {
+  const todos = get();
+  todos.splice(id, 1); // delete the object with specified index
+  set(todos);
+  display();
 };
 
-outputBox.addEventListener("click", event => {
-  if (event.target.matches(".delete")) {
-    const todoId = event.target.id.replace("delete-", "");
+// -----------------------------------------------------------------------------
+// liten for a click to delete
 
-    deleteTodoWithId(todoId);
+output.addEventListener("click", event => {
+  if (event.target.matches(".delete")) {
+    const id = event.target.id.replace("delete-", "");
+    deleteTodo(id);
   }
 });

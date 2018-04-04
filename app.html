@@ -35,17 +35,17 @@
     <main id="app-container" class="app-container row horizontal-center flex-1">
 
       <div id="app-content" class="app-content column horizontal-center">
-        <form id="input-box" class="form-controls row horizontal-center space-between">
+        <form id="input" class="form-controls row horizontal-center space-between">
 
           <div class="col-9">
-            <input id="input-todo-text" class="input-text" type="text" name="newtodo" value="" placeholder="What do you want to do?">
+            <input id="todo" class="input-text" type="text" name="newtodo" value="" placeholder="What do you want to do?">
           </div>
           <div class="col-3">
-            <input id="input-add-button" class="button-primary" type="button" name="add" value="Add">
+            <input id="add" class="button-primary" type="button" name="add" value="Add">
           </div>
         </form>
 
-        <section id="output-box" class="output-box">
+        <section id="output" class="output-box">
           <!-- will be appended with todos -->
         </section>
 
@@ -53,6 +53,7 @@
 
     </main>
 
+    <!-- Features in JavaScript -->
     <script src="./scripts/init.js" charset="utf-8"></script>
     <script src="./scripts/add.js" charset="utf-8"></script>
     <script src="./scripts/delete.js" charset="utf-8"></script>

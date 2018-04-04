@@ -1,73 +1,63 @@
-// use for parsing string to DOM node
-const parser = new DOMParser();
+const parser = new DOMParser(); // use for parsing string to DOM node
 
-// get required elements
-const inputBox = document.getElementById("input-box");
-const outputBox = document.getElementById("output-box");
-const addButton = document.getElementById("input-add-button");
+const input = document.getElementById("input");
+const output = document.getElementById("output");
+const add = document.getElementById("add");
+
+let storage = [];
 
 // -----------------------------------------------------------------------------
-
 // get data string from storage, then convert it to object
-const getTodos = () => {
-  // check if there's a data object in storage
+
+const get = () => {
   if (localStorage.todos) {
-    // parse from string to array object
-    const todosArray = JSON.parse(localStorage.todos);
-    return todosArray;
+    const todos = JSON.parse(localStorage.todos); // parse from string to array object
+    return todos;
   } else {
-    // set the initial data string if not found
-    localStorage.setItem("todos", `[]`);
+    localStorage.todos = "[]"; // set the initial data string if not found
     return [];
   }
 };
 
 // -----------------------------------------------------------------------------
-
 // convert data object to string, then put it into storage
-const setTodos = newTodosArray => {
-  localStorage.setItem("todos", JSON.stringify(newTodosArray));
+
+const set = todos => {
+  localStorage.todos = JSON.stringify(todos);
 };
 
 // -----------------------------------------------------------------------------
-
 // create a template to be used later
-const createNodeStringTemplate = (todoIndex, todoObject) => {
+
+const template = (index, todo) => {
   const template = `
-  <div id="${todoIndex}" data-id="${todoIndex}">
-    <span id="todo-${todoIndex}" class="animated bounceIn">${todoObject.text}
-    </span>
-    <span id="delete-${todoIndex}" class="delete">X
-    </span>
-  </div>
-  `;
+  <div>
+    <span id="todo-${index}" class="animated bounceIn">${todo.text}</span>
+    <span id="delete-${index}" class="delete">X</span>
+  </div>`;
 
   return template;
 };
 
 // -----------------------------------------------------------------------------
-
 // show all todos
-const displayTodos = () => {
-  // empty out all todos in output box
-  outputBox.innerHTML = "";
 
-  const currentTodos = getTodos();
+const display = () => {
+  output.innerHTML = ""; // empty out all todos in output box
+  const todos = get();
 
   // map over all todos to create all todo nodes
-  currentTodos.map((todo, index) => {
-    const nodeString = createNodeStringTemplate(index, currentTodos[index]);
-
+  todos.forEach((todo, index) => {
+    const nodeString = template(index, todos[index]);
     // convert the resulted template into HTML
     const doc = parser.parseFromString(nodeString, "text/html");
     // get only the <div> inside html.body
     const node = doc.body.firstChild;
 
-    outputBox.append(node);
+    output.append(node);
   });
 };
 
 // -----------------------------------------------------------------------------
 
-// initialize application state
-displayTodos();
+display(); // initialize application state
