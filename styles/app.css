@@ -14,6 +14,14 @@
   justify-content: space-between;
 }
 
+.input-search {
+  height: 50px;
+  width: 100%;
+  border: 4px solid #eee;
+  padding-left: 8px;
+  margin-bottom: 12px;
+}
+
 .input-text {
   margin-right: 12px;
   height: 50px;
