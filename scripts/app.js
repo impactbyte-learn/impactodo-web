@@ -111,9 +111,7 @@
     if (event.target.matches(".todo")) {
       const todos = get();
       const id = event.target.id.replace("todo-", "");
-      const newText = prompt("Update todo text:");
-
-      console.log(todos[id]);
+      const newText = prompt(`Update "${todos[id].text}":`);
 
       if (newText !== "") {
         todos[id].text = newText;
