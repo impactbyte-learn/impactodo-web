@@ -5,7 +5,6 @@ const output = document.getElementById("output");
 const add = document.getElementById("add");
 
 // -----------------------------------------------------------------------------
-// get data string from storage, then convert it to object
 
 const get = () => {
   if (localStorage.todos) {
@@ -17,32 +16,26 @@ const get = () => {
 };
 
 // -----------------------------------------------------------------------------
-// convert data object to string, then put it into storage
 
 const set = todos => {
   localStorage.todos = JSON.stringify(todos);
 };
 
 // -----------------------------------------------------------------------------
-// create a template to be used later
 
 const template = (index, todo) => {
-  const template = `
+  return `
   <span id="todo-${index}" class="animated bounceIn">${todo.text}</span>
   <span id="destroy-${index}" class="destroy">X</span>
   `;
-  return template;
 };
 
 // -----------------------------------------------------------------------------
-// show all todos
 
 const display = () => {
   output.innerHTML = ""; // empty out all todos in output box
-  const todos = get();
-
   // map over all todos to create all todo nodes
-  todos.forEach((todo, index) => {
+  get().forEach((todo, index) => {
     const element = document.createElement("div");
     const innerElement = template(index, todos[index]);
     element.innerHTML = innerElement;
