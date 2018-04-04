@@ -44,7 +44,6 @@
 .output-box {
   border: 4px solid hsl(207, 90%, 54%);
   height: 300px;
-  overflow-y: scroll;
 }
 
 .output-box div {
@@ -60,7 +59,7 @@
   font-family: monospace;
 }
 
-.delete {
+.destroy {
   float: right;
   border: none;
   background: none;
@@ -70,7 +69,7 @@
   font-weight: bolder;
 }
 
-.delete:hover {
+.destroy:hover {
   color: hsl(14, 74%, 43%);
 }
 

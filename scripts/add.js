@@ -21,5 +21,5 @@ const add = event => {
 
 // -----------------------------------------------------------------------------
 
-input.addEventListener("submit", add);
-add.addEventListener("click", add);
+inputForm.addEventListener("submit", add);
+addButton.addEventListener("click", add);

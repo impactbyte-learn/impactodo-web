@@ -9,7 +9,7 @@
     url("../fonts/blackjack/blackjack-webfont.svg#webfont") format("svg");
 }
 
-html {
+html, .output-box {
   overflow-y: scroll;
 }
 

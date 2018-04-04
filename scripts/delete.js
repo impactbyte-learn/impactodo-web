@@ -1,7 +1,8 @@
 // -----------------------------------------------------------------------------
 
 const destroy = id => {
-  get().splice(id, 1); // delete the object with specified index
+  const todos = get();
+  todos.splice(id, 1); // delete the object with specified index
   set(todos);
   display();
 };

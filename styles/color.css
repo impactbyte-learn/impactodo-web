@@ -1,11 +1,7 @@
-.white {
-  color: white;
+.white, .white a {
+  color: #ffffff;
 }
 
 .red {
   color: #930000;
-}
-
-.white a {
-  color: white;
 }

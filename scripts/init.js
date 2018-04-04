@@ -1,8 +1,8 @@
 // -----------------------------------------------------------------------------
 
-const input = document.getElementById("input");
-const output = document.getElementById("output");
-const add = document.getElementById("add");
+const inputForm = document.getElementById("input");
+const outputBox = document.getElementById("output");
+const addButton = document.getElementById("add");
 
 // -----------------------------------------------------------------------------
 
@@ -33,13 +33,14 @@ const template = (index, todo) => {
 // -----------------------------------------------------------------------------
 
 const display = () => {
-  output.innerHTML = ""; // empty out all todos in output box
+  // empty out all todos in outputBox
+  outputBox.innerHTML = "";
   // map over all todos to create all todo nodes
   get().forEach((todo, index) => {
     const element = document.createElement("div");
-    const innerElement = template(index, todos[index]);
+    const innerElement = template(index, todo);
     element.innerHTML = innerElement;
-    output.append(element);
+    outputBox.append(element);
   });
 };
 
