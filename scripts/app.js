@@ -1,7 +1,3 @@
-$("body")
-  .hide()
-  .fadeIn();
-
 // -----------------------------------------------------------------------------
 
 const inputForm = document.getElementById("input");
