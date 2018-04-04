@@ -27,6 +27,8 @@
   // DISPLAY / READ
 
   const template = (index, todo) => {
+    if (todo.text === null) todo.text = "[BROKEN]";
+
     return `
     <span id="todo-${index}" class="todo animated bounceIn">
       ${todo.text}
@@ -117,11 +119,11 @@
     if (event.target.matches(".todo")) {
       const todos = get();
       const id = event.target.id.replace("todo-", "");
-      const newText = prompt(`Update "${todos[id].text}":`);
+      const text = prompt(`Update "${todos[id].text}":`);
 
-      if (newText !== "") {
+      if (text !== "" && text !== null) {
         todos[id] = {
-          text: newText,
+          text: text,
           date: new Date()
         };
         set(todos);
