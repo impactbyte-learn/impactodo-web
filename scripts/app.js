@@ -1,3 +1,7 @@
+$("body")
+  .hide()
+  .fadeIn();
+
 // -----------------------------------------------------------------------------
 
 const inputForm = document.getElementById("input");
@@ -43,6 +47,46 @@ const display = () => {
     outputBox.append(element);
   });
 };
+
+// -----------------------------------------------------------------------------
+
+const push = todo => {
+  const todos = get();
+  todos.push(todo);
+  set(todos);
+};
+
+// -----------------------------------------------------------------------------
+
+const add = event => {
+  event.preventDefault(); // prevent default submit behavior
+  const text = document.getElementById("todo").value; // get text from input box
+  if (text !== "") {
+    push({ text });
+    display();
+  } else {
+    alert("Input can not be empty");
+  }
+};
+
+// -----------------------------------------------------------------------------
+
+const destroy = event => {
+  if (event.target.matches(".destroy")) {
+    const id = event.target.id.replace("destroy-", "");
+    const todos = get();
+
+    todos.splice(id, 1); // delete the object with specified index
+    set(todos);
+    display();
+  }
+};
+
+// -----------------------------------------------------------------------------
+
+inputForm.addEventListener("submit", add);
+addButton.addEventListener("click", add);
+outputBox.addEventListener("click", destroy);
 
 // -----------------------------------------------------------------------------
 
