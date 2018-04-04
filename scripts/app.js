@@ -62,7 +62,7 @@
     const text = document.getElementById("todo").value;
     todo.value = "";
 
-    if (text !== "") {
+    if (text) {
       todos.push({
         text: text,
         date: new Date()
@@ -121,7 +121,7 @@
       const id = event.target.id.replace("todo-", "");
       const text = prompt(`Update "${todos[id].text}":`);
 
-      if (text !== "" && text !== null) {
+      if (text) {
         todos[id] = {
           text: text,
           date: new Date()
