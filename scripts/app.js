@@ -1,38 +1,70 @@
 // use for parsing string to DOM node
 const parser = new DOMParser();
 
-// -----------------------------------------------------------------------------
-
-// use this dummy data to prepopulate
-const dummy = [
-  "Join Impact Byte coding bootcamp",
-  "Design my first website",
-  "Create a todo app",
-  "Eat some lunch",
-  "Use Bootstrap"
-];
-
-// prepare for todos array
-const todos = [];
-
-// -----------------------------------------------------------------------------
-
 // get required elements
-const outputBox = document.getElementById("output-box");
-const addButton = document.getElementById("input-add");
 const inputBox = document.getElementById("input-box");
+const outputBox = document.getElementById("output-box");
+const addButton = document.getElementById("input-add-button");
+
+// -----------------------------------------------------------------------------
+
+const getTodos = () => {
+  // check if there's a data object in storage
+  if (localStorage.todos) {
+    // parse from string to array object
+    const todosArray = JSON.parse(localStorage.todos);
+    return todosArray;
+  } else {
+    // set the initial data string if not found
+    localStorage.setItem("todos", `[]`);
+    return [];
+  }
+};
+
+// -----------------------------------------------------------------------------
+
+const setTodos = newTodosArray => {
+  localStorage.setItem("todos", JSON.stringify(newTodosArray));
+};
+
+// -----------------------------------------------------------------------------
+
+const pushNewTodo = newTodoObject => {
+  const currentTodosArray = getTodos();
+
+  currentTodosArray.push(newTodoObject);
+
+  setTodos(currentTodosArray);
+};
 
 // -----------------------------------------------------------------------------
 
 // function to create a todo node string
-const createNodeString = (todoIndex, todoText) => {
+const createNodeStringTemplate = (todoIndex, todoObject) => {
   const template = `
-  <div data-id="${todoIndex}">
-    <span class="animated bounceIn">${todoText}</span>
+  <div id="${todoIndex}" data-id="${todoIndex}">
+    <span class="animated bounceIn">${todoObject.text}</span>
     <i class="delete button fas fa-times-circle"></i>
   </div>
   `;
+
   return template;
+};
+
+// -----------------------------------------------------------------------------
+
+const showTodos = () => {
+  const currentTodos = getTodos();
+
+  // map over all todos to create all todo nodes
+  currentTodos.map((todo, index) => {
+    const nodeString = createNodeStringTemplate(index, currentTodos[index]);
+
+    const doc = parser.parseFromString(nodeString, "text/html");
+    const node = doc.body.firstChild;
+
+    outputBox.append(node);
+  });
 };
 
 // -----------------------------------------------------------------------------
@@ -40,26 +72,20 @@ const createNodeString = (todoIndex, todoText) => {
 // function for adding a new todo
 const addNewTodo = event => {
   event.preventDefault();
-  const inputText = document.getElementById("input-text").value;
 
-  if (inputText !== "") {
+  // get text from input box
+  const newTodoText = document.getElementById("input-todo-text").value;
+
+  if (newTodoText !== "") {
     // empty out all todos in output box
     outputBox.innerHTML = "";
 
-    // get text from input box
-
     // push the new text into todos array
-    todos.push(inputText);
+    pushNewTodo({ text: newTodoText });
 
-    // loop over all todos to create all todo nodes
-    for (let index = 0; index < todos.length; index++) {
-      const nodeString = createNodeString(index, todos[index]);
-
-      const doc = parser.parseFromString(nodeString, "text/html");
-      const node = doc.body.firstChild;
-
-      outputBox.append(node);
-    }
+    showTodos();
+  } else {
+    alert("Input can't be empty");
   }
 };
 
@@ -68,3 +94,8 @@ const addNewTodo = event => {
 // listen for a submit/click to add a new todo
 inputBox.addEventListener("submit", addNewTodo);
 addButton.addEventListener("click", addNewTodo);
+
+// -----------------------------------------------------------------------------
+
+// initialize application state
+showTodos();
