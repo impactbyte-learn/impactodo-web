@@ -28,13 +28,16 @@ class Boss extends Human {
 }
 
 const haidar = new Human("Haidar", 24);
+const fuad = new Employee("Fuad", 23, "Developer", 99999);
 const yanuar = new Employee("Yanuar", 71, "Developer", 10000);
 const dody = new Boss("Dody", 31, "Goreng Gorengan", 123456789);
 
 console.log(haidar);
+console.log(fuad);
 console.log(yanuar);
 console.log(dody);
 
 haidar.run();
+fuad.walk();
 yanuar.walk();
 dody.run();
