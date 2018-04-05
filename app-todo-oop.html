@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="./styles/animate.css">
   <link rel="stylesheet" href="./styles/index.css">
   <link rel="stylesheet" href="./styles/app.css">
-  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -38,26 +37,12 @@
     <main id="app-container" class="app-container row horizontal-center flex-1">
       <div id="app-content" class="app-content column horizontal-center">
 
-        <form id="input" class="form-controls row horizontal-center space-between">
-          <div class="col-9">
-            <input id="todo" class="input-text" type="text" name="newtodo" value="" placeholder="What do you want to do?">
-          </div>
-          <div class="col-3">
-            <input id="add" class="button-primary" type="button" name="add" value="Add">
-          </div>
-        </form>
-
-        <section id="output" class="output-box">
-          <!-- will be appended with todos -->
-        </section>
+        <p id="content"></p>
 
       </div>
     </main>
 
-    <!-- Libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Features in JavaScript -->
-    <script src="./scripts/app-jquery.js" charset="utf-8"></script>
+    <script src="./scripts/app-todo-oop.js" charset="utf-8"></script>
 
     <!-- Footer -->
     <footer id="footer" class="row horizontal-center background-red footer">
