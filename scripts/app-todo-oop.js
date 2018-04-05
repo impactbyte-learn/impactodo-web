@@ -28,6 +28,4 @@ const todo3 = new TodoSpecial(
 
 const todolist = new TodoList([todo1, todo2, todo3]);
 
-// console.log(todolist);
-
-console.log(todo3.image);
+console.log(todolist);
