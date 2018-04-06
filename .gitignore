@@ -1,3 +1,15 @@
 SECRET.txt
 secrets
 .DS_Store
+
+# Numerous always-ignore extensions
+*.diff
+*.err
+*.orig
+*.log
+*.rej
+*.swo
+*.swp
+*.zip
+*.vi
+*~
