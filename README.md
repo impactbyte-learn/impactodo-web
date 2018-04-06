@@ -2,13 +2,13 @@
 
 ![screenshot](./assets/images/screenshot.png)
 
-**Hello Todo** is a simple todo app for everyone.
+**Impact Todo** is a simple todo app for everyone.
 
 ---
 
 ## Author
 
-[![](assets/images/logo.png)](https://impactbyte.com)
+[![](assets/images/logo.png) Impact Byte](https://impactbyte.com)
 
 ---
 
@@ -17,8 +17,10 @@
 ### Main Features
 
 * Create todo
-* Read todo
-* Delete todo
+* Read one or all todos
+* Delete one or all todo
+* Update todo
+* Search or filter todos
 
 ### Additional Features
 
@@ -26,6 +28,17 @@
   * Check
   * Archive
   * ~~Scratch~~
+* Bookmark todo
+* Paginate todos
+* Print todos
+
+### With Registration
+
+* Register a new user account
+* Login account
+* Logout account
+* Comment on todo
+* Interact between users
 
 ---
 
