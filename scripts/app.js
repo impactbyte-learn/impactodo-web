@@ -38,12 +38,12 @@
     `;
   };
 
-  const display = () => {
+  const display = (todos = get()) => {
     // empty out all todos in outputBox
     outputBox.innerHTML = "";
 
     // map over all todos to create all todo nodes
-    get().forEach((todo, index) => {
+    todos.forEach((todo, index) => {
       const element = document.createElement("div");
       element.innerHTML = template(index, todo);
       outputBox.append(element);
@@ -94,22 +94,11 @@
   const search = event => {
     const value = event.target.value.toLowerCase();
     const todos = get();
-    const searched = todos.filter(todo =>
+    const filtered = todos.filter(todo =>
       todo.text.toLowerCase().includes(value)
     );
 
-    displaySearched(searched);
-  };
-
-  const displaySearched = searched => {
-    outputBox.innerHTML = "";
-
-    searched.forEach((todo, index) => {
-      const element = document.createElement("div");
-
-      element.innerHTML = template(index, todo);
-      outputBox.append(element);
-    });
+    display(filtered);
   };
 
   // ===========================================================================
