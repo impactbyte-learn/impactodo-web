@@ -1,0 +1,23 @@
+{
+  "name": "impactodo-web",
+  "version": "0.1.0",
+  "description": "Impact Todo Web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/impactbyte-charizard/impactodo-web.git"
+  },
+  "keywords": [
+    "impactodo",
+    "web"
+  ],
+  "author": "M Haidar Hanif <npm@mhaidarhanif.com> (https://mhaidarhanif.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/impactbyte-charizard/impactodo-web/issues"
+  },
+  "homepage": "https://github.com/impactbyte-charizard/impactodo-web#readme"
+}
