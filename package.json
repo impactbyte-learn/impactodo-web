@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "live-server"
+    "start": "node index",
+    "dev": "node-dev index",
+    "live": "live-server"
   },
   "repository": {
     "type": "git",
@@ -22,9 +24,11 @@
   },
   "homepage": "https://github.com/impactbyte-charizard/impactodo-web#readme",
   "dependencies": {
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "node-static": "^0.7.10"
   },
   "devDependencies": {
-    "live-server": "^1.2.0"
+    "live-server": "^1.2.0",
+    "node-dev": "^3.1.3"
   }
 }
