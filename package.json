@@ -4,7 +4,8 @@
   "description": "Impact Todo Web",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "live-server index.html"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/impactbyte-charizard/impactodo-web/issues"
   },
-  "homepage": "https://github.com/impactbyte-charizard/impactodo-web#readme"
+  "homepage": "https://github.com/impactbyte-charizard/impactodo-web#readme",
+  "dependencies": {
+    "axios": "^0.18.0"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.0"
+  }
 }
