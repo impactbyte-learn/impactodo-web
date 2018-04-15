@@ -1,6 +1,6 @@
 const API_URL = `http://localhost:3000`;
 
-let todos = [];
+let storage = [];
 
 // ===========================================================================
 // ELEMENTS
@@ -13,12 +13,18 @@ const searchForm = document.getElementById("search");
 // ===========================================================================
 // STORAGE
 
-const get = () => {
-  return fetch(`${API_URL}/todos`).then(res => res.json());
+const getStorage = () => {
+  return storage;
 };
 
-const set = todos => {
-  localStorage.todos = JSON.stringify(todos);
+const setStorage = data => {
+  storage = data;
+};
+
+const get = () => {
+  return fetch(`${API_URL}/todos`)
+    .then(res => res.json())
+    .then(res => res.data);
 };
 
 // ===========================================================================
@@ -42,11 +48,22 @@ const display = (response = get()) => {
 
   // map over all todos to create all todo nodes
   response.then(todos => {
-    todos.data.forEach((todo, index) => {
+    setStorage(todos);
+    todos.forEach((todo, index) => {
       const element = document.createElement("div");
       element.innerHTML = template(index, todo);
       outputBox.append(element);
     });
+  });
+};
+
+const displayFiltered = todos => {
+  outputBox.innerHTML = "";
+
+  todos.forEach((todo, index) => {
+    const element = document.createElement("div");
+    element.innerHTML = template(index, todo);
+    outputBox.append(element);
   });
 };
 
@@ -95,12 +112,12 @@ const destroy = event => {
 
 const search = event => {
   const value = event.target.value.toLowerCase();
-  const todos = get();
+  const todos = getStorage();
   const filtered = todos.filter(todo =>
     todo.text.toLowerCase().includes(value)
   );
 
-  display(filtered);
+  displayFiltered(filtered);
 };
 
 // ===========================================================================
