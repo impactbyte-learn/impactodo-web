@@ -21,7 +21,28 @@ const setStorage = data => {
   storage = data;
 };
 
-const get = () => {
+// ===========================================================================
+// API
+
+const requestGET = (id = "") => {
+  return fetch(`${API_URL}/todos/${id}`)
+    .then(res => res.json())
+    .then(res => res.data);
+};
+
+const requestPOST = () => {
+  return fetch(`${API_URL}/todos`)
+    .then(res => res.json())
+    .then(res => res.data);
+};
+
+const requestDELETE = (id = "") => {
+  return fetch(`${API_URL}/todos/${id}`)
+    .then(res => res.json())
+    .then(res => res.data);
+};
+
+const requestPUT = id => {
   return fetch(`${API_URL}/todos`)
     .then(res => res.json())
     .then(res => res.data);
@@ -42,7 +63,7 @@ const template = (index, todo) => {
       `;
 };
 
-const display = (response = get()) => {
+const display = (response = requestGET()) => {
   // empty out all todos in outputBox
   outputBox.innerHTML = "";
 
@@ -57,7 +78,7 @@ const display = (response = get()) => {
   });
 };
 
-const displayFiltered = todos => {
+const displayStorage = (todos = getStorage()) => {
   outputBox.innerHTML = "";
 
   todos.forEach((todo, index) => {
@@ -70,14 +91,10 @@ const displayFiltered = todos => {
 // ===========================================================================
 // ADD / CREATE
 
-const post = payload => {
-  console.log(payload);
-};
-
 const add = event => {
   event.preventDefault(); // prevent default submit behavior
 
-  const todos = get();
+  const todos = getStorage();
   const text = document.getElementById("todo").value;
   todo.value = "";
 
@@ -86,8 +103,8 @@ const add = event => {
       text: text,
       date: new Date()
     });
-    set(todos);
-    display();
+    setStorage(todos);
+    displayStorage();
   } else {
     alert("Input can not be empty");
   }
@@ -99,11 +116,11 @@ const add = event => {
 const destroy = event => {
   if (event.target.matches(".destroy")) {
     const id = event.target.id.replace("destroy-", "");
-    const todos = get();
+    const todos = getStorage();
 
     todos.splice(id, 1); // delete the object with specified index
-    set(todos);
-    display();
+    setStorage(todos);
+    displayStorage();
   }
 };
 
@@ -117,7 +134,7 @@ const search = event => {
     todo.text.toLowerCase().includes(value)
   );
 
-  displayFiltered(filtered);
+  displayStorage(filtered);
 };
 
 // ===========================================================================
@@ -125,7 +142,7 @@ const search = event => {
 
 const edit = event => {
   if (event.target.matches(".todo")) {
-    const todos = get();
+    const todos = getStorage();
     const id = event.target.id.replace("todo-", "");
     const text = prompt(`Update "${todos[id].text}":`);
 
@@ -134,8 +151,8 @@ const edit = event => {
         text: text,
         date: new Date()
       };
-      set(todos);
-      display();
+      setStorage(todos);
+      displayStorage();
     } else {
       alert("Text can not be empty");
     }
