@@ -1,15 +1,7 @@
 @import url("./color.css");
 
-@font-face {
-  font-family: "Black Jack";
-  src: url("../fonts/blackjack/blackjack-webfont.eot");
-  src: url("../fonts/blackjack/blackjack-webfont.eot?iefix") format("eot"),
-    url("../fonts/blackjack/blackjack-webfont.woff") format("woff"),
-    url("../fonts/blackjack/blackjack-webfont.ttf") format("truetype"),
-    url("../fonts/blackjack/blackjack-webfont.svg#webfont") format("svg");
-}
-
-html, .output-box {
+html,
+.output-box {
   overflow-y: scroll;
 }
 
@@ -20,7 +12,6 @@ body {
 }
 
 h1 {
-  font-family: "Black Jack", cursive;
   font-weight: bold;
 }
 
