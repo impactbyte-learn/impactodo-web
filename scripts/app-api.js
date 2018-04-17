@@ -1,4 +1,5 @@
-const API_URL = `https://impactodo-api.herokuapp.com`;
+// const API_URL = `https://impactodo-api.herokuapp.com`;
+const API_URL = `http://localhost:3000`;
 
 let storage = [];
 
@@ -30,22 +31,29 @@ const requestGET = (id = "") => {
     .then(res => res.data);
 };
 
-const requestPOST = () => {
-  return fetch(`${API_URL}/todos`)
+const requestPOST = payload => {
+  return fetch(`${API_URL}/todos`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(payload)
+  })
     .then(res => res.json())
-    .then(res => res.data);
+    .then(res => res);
 };
 
 const requestDELETE = (id = "") => {
-  return fetch(`${API_URL}/todos/${id}`)
-    .then(res => res.json())
-    .then(res => res.data);
+  return fetch(`${API_URL}/todos/${id}`, {
+    method: "DELETE"
+  }).then(res => res);
 };
 
 const requestPUT = id => {
   return fetch(`${API_URL}/todos`)
     .then(res => res.json())
-    .then(res => res.data);
+    .then(res => res);
 };
 
 // ===========================================================================
@@ -55,11 +63,11 @@ const template = (index, todo) => {
   if (todo.text === null) todo.text = "[BROKEN]";
 
   return `
-      <span id="todo-${index}" class="todo animated bounceIn">
+      <span id="todo-${todo.id}" class="todo animated bounceIn">
         ${todo.text}
         <small class="date">${moment(todo.date).calendar()}</small>
         </span>
-      <span id="destroy-${index}" class="destroy">X</span>
+      <span id="destroy-${todo.id}" class="destroy">X</span>
       `;
 };
 
@@ -70,6 +78,7 @@ const display = (response = requestGET()) => {
   // map over all todos to create all todo nodes
   response.then(todos => {
     setStorage(todos);
+
     todos.forEach((todo, index) => {
       const element = document.createElement("div");
       element.innerHTML = template(index, todo);
@@ -91,7 +100,7 @@ const displayStorage = (todos = getStorage()) => {
 // ===========================================================================
 // ADD / CREATE
 
-const add = event => {
+const add = async event => {
   event.preventDefault(); // prevent default submit behavior
 
   const todos = getStorage();
@@ -99,12 +108,8 @@ const add = event => {
   todo.value = "";
 
   if (text) {
-    todos.push({
-      text: text,
-      date: new Date()
-    });
-    setStorage(todos);
-    displayStorage();
+    await requestPOST({ text });
+    display();
   } else {
     alert("Input can not be empty");
   }
@@ -113,14 +118,13 @@ const add = event => {
 // ===========================================================================
 // DESTROY / DELETE
 
-const destroy = event => {
+const destroy = async event => {
   if (event.target.matches(".destroy")) {
     const id = event.target.id.replace("destroy-", "");
-    const todos = getStorage();
 
-    todos.splice(id, 1); // delete the object with specified index
-    setStorage(todos);
-    displayStorage();
+    await requestDELETE(Number(id));
+
+    display();
   }
 };
 
