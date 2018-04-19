@@ -1,5 +1,5 @@
-// const API_URL = `https://impactodo-api.herokuapp.com`;
-const API_URL = `http://localhost:3000`;
+const API_URL = `https://impactodo-api.herokuapp.com`;
+// const API_URL = `http://localhost:3000`;
 
 let storage = [];
 
@@ -31,7 +31,7 @@ const requestGET = (id = "") => {
     .then(res => res.data);
 };
 
-const requestPOST = payload => {
+const requestPOST = (payload = {}) => {
   return fetch(`${API_URL}/todos`, {
     method: "POST",
     headers: {
@@ -50,8 +50,15 @@ const requestDELETE = (id = "") => {
   }).then(res => res);
 };
 
-const requestPUT = id => {
-  return fetch(`${API_URL}/todos`)
+const requestPUT = (id = "", payload = {}) => {
+  return fetch(`${API_URL}/todos/${id}`, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(payload)
+  })
     .then(res => res.json())
     .then(res => res);
 };
@@ -59,7 +66,7 @@ const requestPUT = id => {
 // ===========================================================================
 // DISPLAY / READ
 
-const template = (index, todo) => {
+const template = (index = "", todo = {}) => {
   if (todo.text === null) todo.text = "[BROKEN]";
 
   return `
