@@ -1,6 +1,6 @@
 # Impact Todo
 
-[![Screenshot](./assets/images/screenshot.png)](https://impactodo.netlify.com)
+[![Screenshot](./assets/images/screenshot.png)](https://impactodo.netlify.com) [![Greenkeeper badge](https://badges.greenkeeper.io/impactbyte-learn/impactodo-web.svg)](https://greenkeeper.io/)
 
 [**Impact Todo**](https://impactodo.netlify.com) is a simple todo app for everyone.
 
