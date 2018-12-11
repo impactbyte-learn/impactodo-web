@@ -29,8 +29,7 @@ Open `index.html` file on your web browser.
 * Delete one or all todo <button>X</button>
 * Search or filter todos <button>🔍</button>
 * Update todo
-  * <input value="Edit text"></input>
-  * [ ] Check complete todo
+  * Check complete todo
   * ~~Scratch~~
   * Archive
 
